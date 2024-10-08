@@ -1,0 +1,241 @@
+wtf:
+  colors:
+    background: black
+    border:
+      focusable: darkslateblue
+      focused: orange
+      normal: gray
+    checked: yellow
+    highlight:
+      fore: black
+      back: gray
+    rows:
+      even: yellow
+      odd: white
+  grid:
+    # How _wide_ the columns are, in terminal characters. In this case we have
+    # four columns, each of which are 35 characters wide.
+    columns: [38, 39, 38]
+    # How _high_ the rows are, in terminal lines. In this case we have four rows
+    # that support ten line of text and one of four.
+    rows: [10, 14, 14, 14, 5]
+  refreshInterval: 1
+  openFileUtil: "open"
+  
+  mods:
+    # You can have multiple widgets of the same type.
+    # The "key" is the name (title) of the widget and the type is the actual
+    # widget you want to implement.
+    clocks:
+        # https://wtfutil.com/modules/clocks/
+      title: "TIME"
+      type: clocks
+      colors:
+        rows:
+          even: "blue"
+          odd: "white"
+      enabled: true
+      locations:
+        # GMT: "Etc/GMT"
+        UTC: "Etc/UTC"
+        Paris: "Europe/Paris"
+        Bucharest: "Europe/Bucharest"
+        Boulder: "America/Denver"
+        Nashville: "America/Chicago"
+        New_York: "America/New_York"
+      position:
+        top: 0
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 60
+      sort: "chronological"
+
+    # covid:
+    #   enabled: true
+    #   colors:
+    #     label: "green"
+    #     text: "white"
+    #   countries:
+    #     - US
+    #     - CA
+    #     - UN
+    #   position:
+    #     top: 3
+    #     left: 1
+    #     height: 1
+    #     width: 2   
+    #   refreshInterval: 1h
+
+    # hibp:
+    #   accounts:
+    #   - keithetruesdell@gmail.com
+    #   - pwned@gmail.com
+    #   apiKey: "" # "p0d13*********************************************c3"
+    #   colors:
+    #     ok: "green"
+    #     pwned: "red"
+    #   enabled: true
+    #   position:
+    #     top: 3
+    #     left: 1
+    #     height: 1
+    #     width: 2
+    #   refreshInterval: 12h
+    #   since: "2019-06-22"
+
+    todolist:
+      type: todo
+      checkedIcon: "X"
+      colors:
+        checked: gray
+        highlight:
+          fore: "black"
+          back: "orange"
+      enabled: true
+      filename: "todo.yml"
+      position:
+        top: 1
+        left: 0
+        height: 2
+        width: 1
+      refreshInterval: 3600
+      
+    ip:
+      type: ipinfo
+      title: "My Connection"
+      colors:
+        name: "blue"
+        value: "white"
+      enabled: true
+      position:
+        top: 0
+        left: 1
+        height: 1
+        width: 2
+      refreshInterval: 300
+      
+    security_info:
+      type: security
+      title: "Staying safe"
+      enabled: true
+      position:
+        top: 1
+        left: 2
+        height: 1
+        width: 1
+      refreshInterval: 2m
+
+    readme:
+      type: textfile
+      enabled: true
+      filePaths:
+        - "~/.config/wtf/config.yml"
+      format: true
+      formatStyle: "monokai"
+      position:
+        top: 1
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 15
+      
+    news:
+      type: hackernews
+      title: "HackerNews"
+      enabled: true
+      numberOfStories: 10
+      position:
+        top: 2
+        left: 1
+        height: 1
+        width: 3
+      storyType: top
+      refreshInterval: 900
+      
+    resources:
+      type: resourceusage
+      enabled: true
+      position:
+        top: 3
+        left: 0
+        height: 2
+        width: 1
+      refreshInterval: 1
+      
+    uptime:
+      type: cmdrunner
+      args: []
+      cmd: "uptime"
+      enabled: true
+      position:
+        top: 4
+        left: 1
+        height: 1
+        width: 3
+      refreshInterval: 30
+      
+    disks:
+      type: cmdrunner
+      cmd: "df"
+      args: ["-h"]
+      enabled: true
+      position:
+        top: 3
+        left: 1
+        height: 1
+        width: 3
+      refreshInterval: 3600
+    
+    ## https://wtfutil.com/modules/pihole/
+    #pihole:
+      # apiUrl: http://192.168.1.100:1010/admin/api.php
+      # enabled: true
+      # maxClientWidth: 20
+      # maxDomainWidth: 20
+      # position:
+      #   top: 5
+      #   left: 0
+      #   height: 2
+      #   width: 2
+      # refreshInterval: 1m
+      # showSummary: true
+      # showTopItems: 5
+      # showTopClients: 5
+      # token: atvvedmpyat8140rnhodrok3qr58d8ph85wl6wk1rpb9upiwx1tl6eittz403pqaj
+    
+    ## https://wtfutil.com/modules/jira/
+    # jira:
+    #   apiKey: "p0d13*********************************************c3"
+    #   colors:
+    #     rows:
+    #       even: "lightblue"
+    #       odd: "white"
+    #   domain: "https://umbrellacorp.atlassian.net"
+    #   email: "chriscummer@me.com"
+    #   enabled: true
+    #   jql: "issueType = Story"
+    #   position:
+    #     top: 4
+    #     left: 1
+    #     height: 1
+    #     width: 2
+    #   project: ["ProjectA", "ProjectB"]
+    #   refreshInterval: 15m
+    #   username: "chris.cummer"
+    #   verifyServerCertificate: true
+    
+    ## https://wtfutil.com/modules/gitlab/
+    # gitlab:
+    #   apiKey: "p0d13*********************************************c3"
+    #   enabled: true
+    #   position:
+    #     top: 2
+    #     left: 3
+    #     height: 2
+    #     width: 2
+    #   projects:
+    #     - "gitlab-org/gitlab-ce"
+    #     - "gitlab-org/release/tasks"
+    #   refreshInterval: 5m
+    #  username: "wtfutil"
